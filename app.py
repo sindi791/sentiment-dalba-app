@@ -1,5 +1,4 @@
-# Buat ulang file app.py versi final tanpa error indentasi atau key
-final_app_code = """
+
 import streamlit as st
 import pandas as pd
 import pickle
@@ -40,11 +39,3 @@ if uploaded_file:
             data['sentimen'] = model.predict(X)
             st.write(data[[kolom_komentar, 'sentimen']])
             st.bar_chart(data['sentimen'].value_counts())
-"""
-
-# Simpan ke file app.py
-fixed_app_file = "/mnt/data/app.py"
-with open(fixed_app_file, "w") as f:
-    f.write(final_app_code)
-
-fixed_app_file
