@@ -36,7 +36,8 @@ model_choice = st.selectbox("Pilih Model Klasifikasi:", ['SVM', 'Naive Bayes'])
 # Tombol klasifikasi
 if st.button("Klasifikasikan"):
     # Preprocessing
-    data['cleaned'] = data['komentar'].astype(str).apply(preprocess_text)
+    kolom_komentar = 'komentar' if 'komentar' in data.columns else 'comment'sdata['cleaned'] = data[kolom_komentar].astype(str).apply(preprocess_text)
+
     X = vectorizer.transform(data['cleaned'])
 
     # Prediksi
