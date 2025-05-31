@@ -30,6 +30,12 @@ if uploaded_file:
 
             vectorizer = pickle.load(open("tfidf_vectorizer.pkl", "rb"))
             X = vectorizer.transform(data['cleaned'])
+                if X.shape[1] == 0:
+                    st.error("Teks tidak menghasilkan fitur setelah preprocessing. Coba unggah data lain atau cek preprocessing.")
+                    st.stop()
+
+            data['sentimen'] = model.predict(X)
+
 
             if model_choice == "SVM":
                 model = pickle.load(open("model_svm.pkl", "rb"))
